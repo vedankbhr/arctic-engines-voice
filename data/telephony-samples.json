@@ -33,7 +33,7 @@
   ],
   [
    "Transcripts",
-   "JSON: segment start/end times, duration (ms), speaker 1/2"
+   "Segment start/end, duration (ms), speaker 1/2"
   ],
   [
    "Overlaps",
@@ -210,5 +210,7 @@
     "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_84425b32282e49d3b3e2a605ca246b73.json"
    }
   }
- ]
+ ],
+ "lede": "500+ hours in Hindi and Indian English across 12 business domains. Dual-channel audio, with 60+ hours transcribed by native speakers at segment level.",
+ "sample_set": "10 hrs · 55 speakers · Hindi + Indian English"
 }

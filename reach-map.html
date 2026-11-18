@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>India to global</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<style>
+  html,body{margin:0;height:100%;background:transparent;overflow:hidden;font-family:'Geist',sans-serif;color:#061422}
+  .wrap{height:100%;display:flex;align-items:center;gap:28px}
+  svg{display:block;height:100%;max-height:100%;aspect-ratio:1;flex:none}
+  .sphere{fill:#fff;stroke:#D2E2E9;stroke-width:1}
+  .grat{fill:none;stroke:#E8F1F5;stroke-width:.6}
+  .land{stroke:#fff;stroke-width:.45;transition:fill .7s cubic-bezier(.16,1,.3,1)}
+  .arc{fill:none;stroke:#147A9C;stroke-width:1.6;stroke-linecap:round}
+  .pin{fill:#147A9C;stroke:#fff;stroke-width:1.5}
+  .home{fill:#2BB8DE;stroke:#fff;stroke-width:2}
+  .cap{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+  .k{font:500 11px 'Geist Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#647E8C}
+  .n{font:500 clamp(28px,4.4vw,44px)/1 'Geist',sans-serif;letter-spacing:-.045em;transition:opacity .35s}
+  .n em{font-family:'Instrument Serif',serif;font-weight:400;letter-spacing:-.01em;color:#1998C0}
+  .s{font:500 12px/1.6 'Geist Mono',monospace;color:#35464F;transition:opacity .35s}
+  .steps{display:flex;gap:6px;margin-top:8px}
+  .steps i{display:block;width:22px;height:2px;background:#D2E2E9;transition:background .4s}
+  .steps i.on{background:#061422}
+  .fade{opacity:0}
+  /* narrow embeds: stack the caption under the globe */
+  @media (max-width: 520px){
+    .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+    svg{height:auto;width:min(100%,300px);max-height:none;align-self:center}
+    .n{font-size:28px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <svg id="g" viewBox="0 0 460 460" role="img" aria-label="Globe: India today, expanding to Africa, Europe, the United States and Asia"></svg>
+  <div class="cap" aria-live="polite">
+    <div class="k" id="k">Today</div>
+    <div class="n" id="n">India</div>
+    <div class="s" id="s"></div>
+    <div class="steps" id="steps"></div>
+  </div>
+</div>
+<script>
+const STOPS = [
+  { key: 'in', k: 'Today', n: 'India, <em>market leader</em>', s: 'Apna-scale workforce · 22 Indic languages + Indian English', at: [78.9, 21.5] },
+  { key: 'af', k: 'Next · Africa', n: 'Africa', s: 'Zulu · Afrikaans', at: [22, -2] },
+  { key: 'eu', k: 'Next · Europe', n: 'Europe', s: 'Spanish · French · Swedish · Greek · Ukrainian', at: [14, 47] },
+  { key: 'us', k: 'Next · United States', n: 'United States', s: 'New languages and markets', at: [-97, 38] },
+  { key: 'as', k: 'Next · Asia', n: 'Asia', s: 'Japanese · Tagalog', at: [122, 22] }
+];
+const HOME = STOPS[0].at;
+const C = { base: '#D2E2E9', lit: '#8FE1F7', cur: '#2BB8DE', home: '#061422' };
+const regionOf = f => {
+  if (f.id === '356') return 'in';
+  if (f.id === '840') return 'us';
+  const [lon, lat] = d3.geoCentroid(f);
+  if (lon >= -25 && lon <= 40 && lat >= 36 && lat <= 72) return 'eu';
+  if (lon >= -20 && lon <= 52 && lat >= -36 && lat < 36 && !(lon > 34.5 && lat > 12.5)) return 'af';
+  if (lon >= 95 && lon <= 150 && lat >= -11 && lat <= 50) return 'as';
+  return null;
+};
+const svg = d3.select('#g');
+const proj = d3.geoOrthographic().scale(222).translate([230, 230]).clipAngle(90).precision(0.5);
+const path = d3.geoPath(proj);
+const stepsEl = document.getElementById('steps');
+STOPS.forEach(() => stepsEl.appendChild(document.createElement('i')));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(r => r.json()).then(topo => {
+  const land = topojson.feature(topo, topo.objects.countries).features.filter(f => f.id !== '010');
+  land.forEach(f => { f.r = regionOf(f); });
+  const sphere = svg.append('path').datum({ type: 'Sphere' }).attr('class', 'sphere');
+  const grat = svg.append('path').datum(d3.geoGraticule10()).attr('class', 'grat');
+  const countries = svg.append('g').selectAll('path').data(land).join('path').attr('class', 'land');
+  const arcG = svg.append('g'), pinG = svg.append('g');
+  const home = svg.append('circle').attr('class', 'home').attr('r', 5);
+
+  let idx = 0, visited = new Set(['in']), arcP = {}, rot = [-HOME[0], -HOME[1] * 0.5];
+
+  function paint() {
+    countries.style('fill', f => f.r === 'in' ? C.home : f.r === STOPS[idx].key ? C.cur : visited.has(f.r) ? C.lit : C.base);
+  }
+  function caption() {
+    const s = STOPS[idx];
+    ['n', 's'].forEach(id => document.getElementById(id).classList.add('fade'));
+    setTimeout(() => {
+      document.getElementById('k').textContent = s.k;
+      document.getElementById('n').innerHTML = s.n;
+      document.getElementById('s').textContent = s.s;
+      ['n', 's'].forEach(id => document.getElementById(id).classList.remove('fade'));
+    }, 300);
+    [...stepsEl.children].forEach((el, i) => el.classList.toggle('on', i <= idx));
+  }
+  function draw() {
+    proj.rotate(rot);
+    sphere.attr('d', path); grat.attr('d', path); countries.attr('d', path);
+    const arcs = STOPS.slice(1).filter(s => arcP[s.key] > 0);
+    arcG.selectAll('path').data(arcs, d => d.key).join('path').attr('class', 'arc')
+      .attr('d', d => path({ type: 'LineString', coordinates: [HOME, d3.geoInterpolate(HOME, d.at)(arcP[d.key])] }));
+    const vis = p => d3.geoDistance(p, [-rot[0], -rot[1]]) < Math.PI / 2;
+    pinG.selectAll('circle').data(arcs.filter(d => arcP[d.key] >= 1 && vis(d.at)), d => d.key).join('circle').attr('class', 'pin').attr('r', 4)
+      .attr('cx', d => proj(d.at)[0]).attr('cy', d => proj(d.at)[1]);
+    const h = proj(HOME); home.attr('cx', h[0]).attr('cy', h[1]).attr('opacity', vis(HOME) ? 1 : 0);
+  }
+
+  paint(); caption(); draw();
+  if (reduce) { STOPS.forEach(s => { visited.add(s.key); arcP[s.key] = 1; }); paint(); draw(); return; }
+
+  const MOVE = 1700, HOLD = 2600;
+  let phase = 'hold', t0 = performance.now(), from = rot.slice(), to = rot.slice();
+  const ease = d3.easeCubicInOut;
+  function next() {
+    idx = (idx + 1) % STOPS.length;
+    if (idx === 0) { visited = new Set(['in']); arcP = {}; }
+    const s = STOPS[idx];
+    from = rot.slice();
+    let dl = ((-s.at[0] - from[0] + 540) % 360) - 180;
+    if (s.key !== 'in') { const mid = -((HOME[0] + s.at[0]) / 2); dl = ((mid - from[0] + 540) % 360) - 180; if (s.key === 'us' || s.key === 'as') dl = ((-s.at[0] - from[0] + 540) % 360) - 180; }
+    to = [from[0] + dl, -(idx === 0 ? HOME[1] : s.at[1]) * 0.5];
+    phase = 'move'; t0 = performance.now();
+    caption();
+  }
+  d3.timer(() => {
+    const now = performance.now(), e = now - t0;
+    if (phase === 'hold') {
+      const s = STOPS[idx];
+      if (s.key !== 'in' && (arcP[s.key] || 0) < 1) arcP[s.key] = Math.min(1, ease(Math.min(1, e / 1100)));
+      if (e > HOLD) next();
+    } else {
+      const p = ease(Math.min(1, e / MOVE));
+      rot = [from[0] + (to[0] - from[0]) * p, from[1] + (to[1] - from[1]) * p];
+      if (e >= MOVE) { phase = 'hold'; t0 = now; if (STOPS[idx].key !== 'in') { visited.add(STOPS[idx].key); arcP[STOPS[idx].key] = 0.001; } paint(); }
+    }
+    draw();
+  });
+});
+</script>
+</body>
+</html>

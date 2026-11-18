@@ -1,17 +1,20 @@
 # Arctic Engines · Voice AI site
 
-Static marketing site for Arctic Engines' Voice AI offering: pricing, languages, a voice-sample library and telephony samples with a transcript viewer.
+Static marketing site for Arctic Engines' Voice AI offering: a voice library, telephony samples with a transcript viewer, and a rate card.
+
+The layout implements **Voice AI Site v5** from the "Arctic Engines Voice Redesign" Claude Design project. Its colours, spacing and motion come from the Arctic Engines design-system tokens, copied into the top of `styles.css`.
 
 Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages from `main` / root.
 
 ```
-index.html            page shell (hero copy, section headings, footer)
-styles.css            all styling (brand tokens at the top in :root)
-app.js                renders everything from data/*.json, audio players, filters, transcript drawer
-data/pricing.json     the three service blocks and their price tables
-data/languages.json   tiers, tier prices, per-language voice counts and tags
-data/voice-samples.json      one entry per voice sample card
-data/telephony-samples.json  telephony intro, stats, specs and the 12 domains
+index.html            page shell (hero, iceberg diagram, section headings, footer, player bar, drawer)
+styles.css            all styling (design-system tokens at the top in :root)
+app.js                renders everything from data/*.json; one shared audio engine for every play button
+reach-map.html        the animated globe embedded in the overview (d3 + world-atlas from CDNs)
+data/pricing.json     the three rate-card tabs and their tables
+data/languages.json   tiers, tier prices, per-language voice counts, tags and native-script names
+data/voice-samples.json      one entry per voice sample (F / M / F1 / F2 buttons)
+data/telephony-samples.json  telephony lede, specs and the 12 domains
 data/transcripts/     mirrored transcript JSON (fallback while GCS has no CORS)
 scripts/sync-transcripts.mjs refreshes data/transcripts/ from GCS
 assets/               logos and favicon
@@ -30,10 +33,10 @@ python3 -m http.server 8000     # then open http://localhost:8000
 
 All prices are strings, so they render exactly as written (`"$8–10"`, `"Quote"`, `"$25+"`).
 
-- **Voice cloning tier cards:** `data/pricing.json → voice_cloning.tiers[]` (`in_stock`, `custom`). The quick estimate reads the same numbers.
-- **Evals table:** `data/pricing.json → evals.groups[].rows[]`. Each row is `[role, tier1, tier2, tier3]`.
-- **ASR / telephony table:** `data/pricing.json → asr.rows[]` and `asr.stock[]` (the dotted-leader lines).
-- **Tier prices in the Languages section:** `data/languages.json → tier_prices`.
+- **Voice cloning tab:** `data/pricing.json → voice_cloning.tiers[]` (`in_stock`, `custom`). The estimator reads the same numbers.
+- **Evals tab:** `data/pricing.json → evals.groups[].rows[]`. Each row is `[role, tier1, tier2, tier3]`.
+- **ASR & telephony tab:** `data/pricing.json → asr.rows[]` and `asr.stock[]` (the dotted-leader lines).
+- **Tier prices above each voice-library column:** `data/languages.json → tier_prices`.
 - **Telephony spec block:** `data/telephony-samples.json → specs`.
 
 When a price changes, update it in every place it appears (for example, `$110` appears in both `pricing.json` and `languages.json`).
@@ -46,11 +49,11 @@ When a price changes, update it in every place it appears (for example, `$110` a
 { "language": "Hindi", "gender": "Female", "url": "https://storage.googleapis.com/arctic-engine-public/Hindi_Female_2.wav", "type": "audio/wav" }
 ```
 
-- `language` must match a `language` in `data/languages.json`. That's where the tier pill and voice count come from.
-- `type` is `audio/wav`, `audio/mpeg` (mp3), `audio/mp4` (m4a) or `audio/ogg; codecs=opus`. If the browser can't play the type, the card shows a download link instead.
-- Several samples with the same language and gender are labelled "Female 1", "Female 2" and so on automatically.
+- `language` must match a `language` in `data/languages.json`. The sample appears as a button on that language's row.
+- `type` is `audio/wav`, `audio/mpeg` (mp3), `audio/mp4` (m4a) or `audio/ogg; codecs=opus`. If the browser can't play it, the player bar offers a download link instead.
+- Several samples with the same language and gender get buttons F1, F2 and so on automatically.
 
-**New language or voice counts:** edit `data/languages.json → languages[]`. Totals, stats and tier counts are computed from it; `unique_speakers` is set by hand.
+**New language or voice counts:** edit `data/languages.json → languages[]`. `native` is the name shown in the language's own script.
 
 **Telephony domain:** add an object to `data/telephony-samples.json → domains[]` with `hindi`/`english` → `audio` (.ogg) and `transcript` (.json).
 
@@ -58,15 +61,13 @@ Audio stays on Google Cloud Storage; don't commit audio files to the repo.
 
 ## Transcript viewer and CORS
 
-The "View transcript" drawer first `fetch()`es the transcript JSON from GCS. The browser only allows this if the bucket sends CORS headers, and `arctic-public` doesn't send them yet. So the site falls back to copies in `data/transcripts/`, which are mirrored by:
+The "Transcript ↗" drawer loads the copy in `data/transcripts/` first, then falls back to GCS. The GCS bucket `arctic-public` sends no CORS headers yet, so browsers can't load transcripts from it directly. Refresh the copies with:
 
 ```sh
 node scripts/sync-transcripts.mjs   # re-run after adding or changing telephony samples, then commit
 ```
 
-(The browser console shows one CORS error per transcript opened. That's expected; the fallback copy then loads.)
-
-To serve transcripts straight from GCS and stop needing the mirror, set CORS on the bucket:
+To make the GCS fallback work too, set CORS on the bucket:
 
 ```sh
 cat > cors.json <<'EOF'

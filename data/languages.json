@@ -29,7 +29,8 @@
     "EVALS",
     "ASR"
    ],
-   "note": "+ Hinglish"
+   "note": "+ Hinglish",
+   "native": "हिन्दी"
   },
   {
    "tier": 1,
@@ -40,7 +41,8 @@
    "tags": [
     "EVALS",
     "ASR"
-   ]
+   ],
+   "native": "English"
   },
   {
    "tier": 1,
@@ -50,7 +52,8 @@
    "male": 5,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "বাংলা"
   },
   {
    "tier": 1,
@@ -60,7 +63,8 @@
    "male": 7,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "मराठी"
   },
   {
    "tier": 1,
@@ -70,7 +74,8 @@
    "male": 2,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "ગુજરાતી"
   },
   {
    "tier": 1,
@@ -80,7 +85,8 @@
    "male": 2,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "தமிழ்"
   },
   {
    "tier": 1,
@@ -90,7 +96,8 @@
    "male": 1,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "తెలుగు"
   },
   {
    "tier": 1,
@@ -100,7 +107,8 @@
    "male": 2,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "ಕನ್ನಡ"
   },
   {
    "tier": 1,
@@ -110,7 +118,8 @@
    "male": 5,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "മലയാളം"
   },
   {
    "tier": 1,
@@ -120,7 +129,8 @@
    "male": 3,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "ਪੰਜਾਬੀ"
   },
   {
    "tier": 2,
@@ -130,7 +140,8 @@
    "male": 6,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "اردو"
   },
   {
    "tier": 2,
@@ -140,7 +151,8 @@
    "male": 4,
    "tags": [
     "EVALS"
-   ]
+   ],
+   "native": "ଓଡ଼ିଆ"
   },
   {
    "tier": 2,
@@ -148,7 +160,8 @@
    "voices": 2,
    "female": 0,
    "male": 2,
-   "tags": []
+   "tags": [],
+   "native": "অসমীয়া"
   },
   {
    "tier": 2,
@@ -156,7 +169,8 @@
    "voices": 1,
    "female": 1,
    "male": 0,
-   "tags": []
+   "tags": [],
+   "native": "कोंकणी"
   },
   {
    "tier": 2,
@@ -164,7 +178,8 @@
    "voices": 8,
    "female": 8,
    "male": 0,
-   "tags": []
+   "tags": [],
+   "native": "سنڌي"
   },
   {
    "tier": 3,
@@ -172,7 +187,8 @@
    "voices": 2,
    "female": 1,
    "male": 1,
-   "tags": []
+   "tags": [],
+   "native": "کٲشُر"
   },
   {
    "tier": 3,
@@ -180,7 +196,8 @@
    "voices": 2,
    "female": 0,
    "male": 2,
-   "tags": []
+   "tags": [],
+   "native": "नेपाली"
   },
   {
    "tier": 3,
@@ -188,7 +205,8 @@
    "voices": 4,
    "female": 4,
    "male": 0,
-   "tags": []
+   "tags": [],
+   "native": "ꯃꯤꯇꯩꯂꯣꯟ"
   },
   {
    "tier": 3,
@@ -196,7 +214,8 @@
    "voices": 1,
    "female": 0,
    "male": 1,
-   "tags": []
+   "tags": [],
+   "native": "बड़ो"
   },
   {
    "tier": 3,
@@ -204,7 +223,8 @@
    "voices": 1,
    "female": 1,
    "male": 0,
-   "tags": []
+   "tags": [],
+   "native": "डोगरी"
   },
   {
    "tier": 3,
@@ -212,7 +232,8 @@
    "voices": 5,
    "female": 0,
    "male": 5,
-   "tags": []
+   "tags": [],
+   "native": "ᱥᱟᱱᱛᱟᱲᱤ"
   },
   {
    "tier": 3,
@@ -220,7 +241,8 @@
    "voices": 3,
    "female": 2,
    "male": 1,
-   "tags": []
+   "tags": [],
+   "native": "संस्कृतम्"
   },
   {
    "tier": 3,
@@ -228,7 +250,8 @@
    "voices": 2,
    "female": 1,
    "male": 1,
-   "tags": []
+   "tags": [],
+   "native": "मैथिली"
   }
  ]
 }
