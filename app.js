@@ -544,7 +544,15 @@
         for (const li of segEls) { if (li._start <= ms && ms < li._end) hit = li; if (li._start > ms) break; }
         if (hit !== active) {
           if (active) active.classList.remove("active");
-          if (hit) { hit.classList.add("active"); hit.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
+          if (hit) {
+            hit.classList.add("active");
+            // scroll only the drawer body, never the page
+            const box = $("#drawer-body");
+            const top = hit.offsetTop - box.offsetTop;
+            if (top < box.scrollTop || top + hit.offsetHeight > box.scrollTop + box.clientHeight) {
+              box.scrollTo({ top: Math.max(0, top - 24), behavior: "smooth" });
+            }
+          }
           active = hit;
         }
       });
@@ -576,7 +584,20 @@
         if (!en.isIntersecting) continue;
         links.forEach((a) => a.removeAttribute("aria-current"));
         const a = map.get(en.target.id);
-        if (a) { a.setAttribute("aria-current", "true"); a.scrollIntoView({ block: "nearest", inline: "nearest" }); }
+        if (a) {
+          a.setAttribute("aria-current", "true");
+          // Keep the active link visible in the (horizontally scrollable) nav strip.
+          // Only scroll the strip itself; scrollIntoView() would also move the page
+          // and cancel any scroll in progress.
+          const ul = a.closest("ul");
+          const li = a.parentElement;
+          if (ul.scrollWidth > ul.clientWidth) {
+            const left = li.offsetLeft - ul.offsetLeft;
+            if (left < ul.scrollLeft || left + li.offsetWidth > ul.scrollLeft + ul.clientWidth) {
+              ul.scrollTo({ left: Math.max(0, left - 16) });
+            }
+          }
+        }
       }
     }, { rootMargin: "-45% 0px -50% 0px" });
     map.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
