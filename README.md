@@ -12,6 +12,8 @@ data/pricing.json     the three service blocks and their price tables
 data/languages.json   tiers, tier prices, per-language voice counts and tags
 data/voice-samples.json      one entry per voice sample card
 data/telephony-samples.json  telephony intro, stats, specs and the 12 domains
+data/transcripts/     mirrored transcript JSON (fallback while GCS has no CORS)
+scripts/sync-transcripts.mjs refreshes data/transcripts/ from GCS
 assets/               logos and favicon
 scripts/check-links.mjs      HEAD-checks every sample URL
 ```
@@ -56,7 +58,15 @@ Audio stays on Google Cloud Storage; don't commit audio files to the repo.
 
 ## Transcript viewer and CORS
 
-The "View transcript" drawer `fetch()`es the transcript JSON from GCS. The browser only allows this if the bucket sends CORS headers. Without them the drawer shows an "Open raw JSON" link instead. To enable the inline viewer:
+The "View transcript" drawer first `fetch()`es the transcript JSON from GCS. The browser only allows this if the bucket sends CORS headers, and `arctic-public` doesn't send them yet. So the site falls back to copies in `data/transcripts/`, which are mirrored by:
+
+```sh
+node scripts/sync-transcripts.mjs   # re-run after adding or changing telephony samples, then commit
+```
+
+(The browser console shows one CORS error per transcript opened. That's expected; the fallback copy then loads.)
+
+To serve transcripts straight from GCS and stop needing the mirror, set CORS on the bucket:
 
 ```sh
 cat > cors.json <<'EOF'

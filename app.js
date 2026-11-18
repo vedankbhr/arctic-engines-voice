@@ -475,13 +475,22 @@
     requestAnimationFrame(() => { drawer.classList.add("open"); backdrop.classList.add("open"); });
     $("#drawer-close").focus();
 
-    let data;
-    try {
-      data = txCache.get(transcript) || await loadJSON(transcript);
-      txCache.set(transcript, data);
-    } catch (err) {
-      console.warn("[transcript] could not fetch", transcript, err,
-        "\nIf this is a CORS error, allow GET from this site's origin on the GCS bucket (see README).");
+    // GCS first (source of truth); fall back to the mirrored copy in
+    // data/transcripts/ while the bucket has no CORS (see README).
+    let data = txCache.get(transcript);
+    if (!data) {
+      try {
+        data = await loadJSON(transcript);
+      } catch (err) {
+        try {
+          data = await loadJSON(`data/transcripts/${transcript.split("/").pop()}`);
+        } catch (err2) {
+          console.warn("[transcript] could not fetch", transcript, err, err2);
+        }
+      }
+      if (data) txCache.set(transcript, data);
+    }
+    if (!data) {
       body.replaceChildren(h("div.drawer-state", null,
         h("p", { text: "This transcript couldn't be loaded inside the page. You can open the raw JSON file directly." }),
         h("a.btn.btn-primary", { href: transcript, target: "_blank", rel: "noopener", text: "Open raw JSON ↗" })));
