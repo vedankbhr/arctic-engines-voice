@@ -102,7 +102,13 @@
   audio.addEventListener("waiting", () => { st.waiting = true; sync(); });
   audio.addEventListener("playing", () => { st.waiting = false; sync(); });
   audio.addEventListener("timeupdate", syncProgress);
-  audio.addEventListener("error", () => { if (st.cur && audio.getAttribute("src")) { st.err = st.cur; st.waiting = false; sync(); } });
+  audio.addEventListener("error", () => {
+    // Ignore aborts and late errors from a source we've already switched away from.
+    const it = st.cur && ITEMS[st.cur];
+    const code = audio.error ? audio.error.code : 0;
+    if (!it || code === 1 /* MEDIA_ERR_ABORTED */ || audio.getAttribute("src") !== it.url) return;
+    st.err = st.cur; st.waiting = false; sync();
+  });
 
   const isOn = (k) => st.cur === k;
   const isPlaying = (k) => st.cur === k && !audio.paused && st.err !== k;
