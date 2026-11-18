@@ -1,0 +1,77 @@
+{
+  "voice_cloning": {
+    "id": "pricing-voice-cloning",
+    "kicker": "01 / Voice cloning data",
+    "title": "Consented voices,",
+    "title_accent": "in stock.",
+    "copy": "One hour per voice, single speaker, full voice rights. 200+ unique voices ship in days; custom collection follows your persona brief.",
+    "callouts": [
+      { "label": "Q1 2027", "text": "Spanish, French, Japanese, Swedish, Tagalog, Greek, Ukrainian, Zulu, Afrikaans." }
+    ],
+    "unit": "Per voice-hour, USD",
+    "tiers": [
+      { "tier": 1, "languages": "Hindi, Tamil, Telugu + 7 more", "in_stock": "$110", "custom": "$200" },
+      { "tier": 2, "languages": "Urdu, Odia, Assamese + 2 more", "in_stock": "$150", "custom": "$250" },
+      { "tier": 3, "languages": "Nepali, Kashmiri + 6 more", "in_stock": "$250", "custom": "$450" }
+    ],
+    "audio_eval_per_voice": "$15",
+    "note": "Per voice-hour, USD · audio evaluation $15 per voice"
+  },
+
+  "evals": {
+    "id": "pricing-evals",
+    "kicker": "02 / TTS & voice evals",
+    "title": "Native-speaker evals,",
+    "title_accent": "audited.",
+    "copy": "Pairwise preference, clone quality, accent regression, pronunciation, ablations and audits.",
+    "callouts": [
+      { "label": "Ready now", "text": "Hindi, Hinglish, Indian English, Tamil, Telugu, Marathi, Punjabi, Malayalam, Urdu, Bengali, Gujarati, Kannada, Odia." },
+      { "label": "On request", "text": "Assamese, Konkani, Sindhi, Nepali, Maithili + more." }
+    ],
+    "columns": ["Role", "Tier 1", "Tier 2", "Tier 3"],
+    "groups": [
+      {
+        "label": "Hourly",
+        "rows": [
+          ["Evaluator", "$8–10", "$11–13", "Quote"],
+          ["QC reviewer", "$10–12", "$13–14", "$16–20"],
+          ["Auditor / linguist", "$18–22", "$20–25", "$25+"]
+        ]
+      },
+      {
+        "label": "Monthly",
+        "rows": [
+          ["Dedicated bench", "$800–1,000", "$1,000–1,200", "Quote"],
+          ["Dedicated QC", "$1,000–1,200", "$1,300–1,500", "Quote"]
+        ]
+      }
+    ],
+    "note": "USD. Per-study quotes after a calibration batch."
+  },
+
+  "asr": {
+    "id": "pricing-asr",
+    "kicker": "03 / ASR & telephony data",
+    "title": "Real phone-line speech",
+    "title_accent": "for ASR.",
+    "copy": "Phone-line conversations in Hindi and English across 12 business domains, ready to license.",
+    "stock": [
+      { "amount": "500+ hrs", "label": "audio", "price": "$6/hr" },
+      { "amount": "60+ hrs", "label": "with transcripts", "price": "$12–15/hr" }
+    ],
+    "table_caption": "Per audio hour, USD; Tier 1 = Hindi, Indian English",
+    "columns": ["Service", "Tier 1", "Tier 2"],
+    "rows": [
+      { "service": "Transcription", "values": ["$30–35", "$40–45"] },
+      { "service": "Human-to-human collection", "values": ["$18–20", "$20–22"] },
+      { "service": "with transcription", "sub": true, "values": ["$48–55", "$60–67"] },
+      { "service": "Bot-to-human collection", "values": ["$10", "$12"] },
+      { "service": "with transcription", "sub": true, "values": ["$40–45", "$52–57"] },
+      { "service": "ASR and voice agent benchmarks", "span": "Quote" }
+    ],
+    "footer": [
+      "Explicit consent · Two-level QC, 95%+",
+      "Indicative rates in USD. Tier 3 and exclusive licences quoted per project."
+    ]
+  }
+}

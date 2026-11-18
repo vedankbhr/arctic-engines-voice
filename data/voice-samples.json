@@ -1,0 +1,206 @@
+[
+ {
+  "language": "Hindi",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Hindi_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Hindi",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Hindi_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Gujarati",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Gujarati_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Tamil",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Tamil_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Tamil",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Tamil_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Marathi",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Marathi_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Marathi",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Marathi_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Bengali",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Bengali_Female_1.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Bengali",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Bengali_Female_2.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Urdu",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Urdu_Male_1.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Urdu",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Urdu_Male_2.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Malayalam",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Malayalam_Female_1.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Malayalam",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Malayalam_Female_2.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Odia",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Odia_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Odia",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Odia_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Kannada",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Kannada_Female_1.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Kannada",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Kannada_Female_2.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Punjabi",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Punjabi_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Punjabi",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Punjabi_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Sindhi",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Sindhi_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Telugu",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Telugu_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Telugu",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Telugu_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Indian English",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Indian_English_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Indian English",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Indian_English_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Santali",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Santali_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Manipuri",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Manipuri_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Sanskrit",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Sanskrit_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Assamese",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Assamese_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Kashmiri",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Kashmiri_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Maithili",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Maithili_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Nepali",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Nepali_Male.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Bodo",
+  "gender": "Male",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Bodo_Male.mpeg",
+  "type": "audio/mpeg"
+ },
+ {
+  "language": "Dogri",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Dogri_Female.wav",
+  "type": "audio/wav"
+ },
+ {
+  "language": "Konkani",
+  "gender": "Female",
+  "url": "https://storage.googleapis.com/arctic-engine-public/Konkani_Female.m4a",
+  "type": "audio/mp4"
+ }
+]

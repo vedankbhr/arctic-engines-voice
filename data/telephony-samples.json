@@ -1,0 +1,214 @@
+{
+ "intro": "500+ hours of real phone-line conversations in Hindi and Indian English across 12 business domains, recorded on dual-channel telephony audio, with 60+ hours transcribed by native speakers at segment level.",
+ "stats": [
+  {
+   "value": "500+ hrs",
+   "label": "telephony audio in stock"
+  },
+  {
+   "value": "60+ hrs",
+   "label": "with transcripts"
+  },
+  {
+   "value": "12",
+   "label": "business domains"
+  },
+  {
+   "value": "2",
+   "label": "languages (Hindi, Indian English)"
+  },
+  {
+   "value": "10 hrs",
+   "label": "sample set, 55 speakers"
+  }
+ ],
+ "specs": [
+  [
+   "Audio",
+   "Dual-channel .ogg, one speaker per channel"
+  ],
+  [
+   "Format",
+   "One JSON per recording, two speakers"
+  ],
+  [
+   "Transcripts",
+   "JSON: segment start/end times, duration (ms), speaker 1/2"
+  ],
+  [
+   "Overlaps",
+   "Interrupted segments flagged"
+  ],
+  [
+   "Script",
+   "Devanagari Hindi, natural code-mixing"
+  ],
+  [
+   "QC",
+   "Two-level human review, 95%+"
+  ],
+  [
+   "Pricing",
+   "$6/hr audio, $12–15/hr transcribed"
+  ]
+ ],
+ "audio_type": "audio/ogg; codecs=opus",
+ "domains": [
+  {
+   "domain": "Healthcare",
+   "hindi_calls": 3,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_5a94bffa503740a296cc2d2abfb6d8ad.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_5a94bffa503740a296cc2d2abfb6d8ad.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_24dce4bc914c4397b942709a25a5a587.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_24dce4bc914c4397b942709a25a5a587.json"
+   }
+  },
+  {
+   "domain": "Telecom",
+   "hindi_calls": 3,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_db9449a3cfa4453985e7a3665be3e354.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_db9449a3cfa4453985e7a3665be3e354.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_bd2b3cbe4fe64714bd67d88dd297046d.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_bd2b3cbe4fe64714bd67d88dd297046d.json"
+   }
+  },
+  {
+   "domain": "Loans",
+   "hindi_calls": 3,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_63df5735560f41d69de41bac34de48bf.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_63df5735560f41d69de41bac34de48bf.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_2d230bf454074e58b50f7c3ffc0abfb4.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_2d230bf454074e58b50f7c3ffc0abfb4.json"
+   }
+  },
+  {
+   "domain": "Insurance",
+   "hindi_calls": 3,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_5211389aeefc42de8f22cca147f4c872.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_5211389aeefc42de8f22cca147f4c872.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_fc4c009a2b784b9c9e7c3837b2a457bd.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_fc4c009a2b784b9c9e7c3837b2a457bd.json"
+   }
+  },
+  {
+   "domain": "EdTech",
+   "hindi_calls": 2,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_cd6d94ff3c92435dba3610b5d1317e5e.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_cd6d94ff3c92435dba3610b5d1317e5e.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_e7cf70cec17a47ed8e9395b36bcc1a64.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_e7cf70cec17a47ed8e9395b36bcc1a64.json"
+   }
+  },
+  {
+   "domain": "BPO / customer support",
+   "hindi_calls": 2,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_18e0275886c2485d8203ce6773d38c76.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_18e0275886c2485d8203ce6773d38c76.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_acbb1b04fdd7418ea23038ec185c331d.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_acbb1b04fdd7418ea23038ec185c331d.json"
+   }
+  },
+  {
+   "domain": "Logistics",
+   "hindi_calls": 2,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_e61da0e1aa1b4567baaf3a970829a16d.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_e61da0e1aa1b4567baaf3a970829a16d.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_6bfc0f778d2d40a99fb26e84e3fbb440.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_6bfc0f778d2d40a99fb26e84e3fbb440.json"
+   }
+  },
+  {
+   "domain": "Real Estate",
+   "hindi_calls": 2,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_7c23a63627804924968128e61be831b1.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_7c23a63627804924968128e61be831b1.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_829d798faa5c4c399064b37229b75a08.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_829d798faa5c4c399064b37229b75a08.json"
+   }
+  },
+  {
+   "domain": "Retail",
+   "hindi_calls": 2,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_56cf3f65461a436ba5d4400427cf9f33.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_56cf3f65461a436ba5d4400427cf9f33.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_cc1883870fa64d3ea5121763da1297c9.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_cc1883870fa64d3ea5121763da1297c9.json"
+   }
+  },
+  {
+   "domain": "Travel",
+   "hindi_calls": 2,
+   "english_calls": 2,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_a0bfc722e5234e2e91d33b9320e11eb6.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_a0bfc722e5234e2e91d33b9320e11eb6.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_0f668dc410314c4b91ca4c12ea1280e8.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_0f668dc410314c4b91ca4c12ea1280e8.json"
+   }
+  },
+  {
+   "domain": "Sales",
+   "hindi_calls": 3,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_72ac573fc1954f58861b9884fe33b6c8.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_72ac573fc1954f58861b9884fe33b6c8.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_d7ca30314ce74d21a672fb1f07a92a05.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_d7ca30314ce74d21a672fb1f07a92a05.json"
+   }
+  },
+  {
+   "domain": "Generic (everyday)",
+   "hindi_calls": 3,
+   "english_calls": 3,
+   "hindi": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_fc4f8503b8a544d0822df538a632b3fd.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_fc4f8503b8a544d0822df538a632b3fd.json"
+   },
+   "english": {
+    "audio": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_84425b32282e49d3b3e2a605ca246b73.ogg",
+    "transcript": "https://storage.googleapis.com/arctic-public/bm-dual-channel/submission_84425b32282e49d3b3e2a605ca246b73.json"
+   }
+  }
+ ]
+}

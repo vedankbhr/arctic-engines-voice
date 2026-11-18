@@ -1,0 +1,234 @@
+{
+ "tier_prices": {
+  "1": {
+   "in_stock": "$110",
+   "custom": "$200",
+   "evals_per_hr": "$8–10"
+  },
+  "2": {
+   "in_stock": "$150",
+   "custom": "$250",
+   "evals_per_hr": "$11–13"
+  },
+  "3": {
+   "in_stock": "$250",
+   "custom": "$450",
+   "evals_per_hr": "Quote"
+  }
+ },
+ "unique_speakers": 204,
+ "gender_note": "One Urdu voice has no gender recorded.",
+ "languages": [
+  {
+   "tier": 1,
+   "language": "Hindi",
+   "voices": 55,
+   "female": 29,
+   "male": 26,
+   "tags": [
+    "EVALS",
+    "ASR"
+   ],
+   "note": "+ Hinglish"
+  },
+  {
+   "tier": 1,
+   "language": "Indian English",
+   "voices": 7,
+   "female": 5,
+   "male": 2,
+   "tags": [
+    "EVALS",
+    "ASR"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Bengali",
+   "voices": 13,
+   "female": 8,
+   "male": 5,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Marathi",
+   "voices": 16,
+   "female": 9,
+   "male": 7,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Gujarati",
+   "voices": 18,
+   "female": 16,
+   "male": 2,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Tamil",
+   "voices": 17,
+   "female": 15,
+   "male": 2,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Telugu",
+   "voices": 8,
+   "female": 7,
+   "male": 1,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Kannada",
+   "voices": 10,
+   "female": 8,
+   "male": 2,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Malayalam",
+   "voices": 12,
+   "female": 7,
+   "male": 5,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 1,
+   "language": "Punjabi",
+   "voices": 8,
+   "female": 5,
+   "male": 3,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 2,
+   "language": "Urdu",
+   "voices": 13,
+   "female": 6,
+   "male": 6,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 2,
+   "language": "Odia",
+   "voices": 11,
+   "female": 7,
+   "male": 4,
+   "tags": [
+    "EVALS"
+   ]
+  },
+  {
+   "tier": 2,
+   "language": "Assamese",
+   "voices": 2,
+   "female": 0,
+   "male": 2,
+   "tags": []
+  },
+  {
+   "tier": 2,
+   "language": "Konkani",
+   "voices": 1,
+   "female": 1,
+   "male": 0,
+   "tags": []
+  },
+  {
+   "tier": 2,
+   "language": "Sindhi",
+   "voices": 8,
+   "female": 8,
+   "male": 0,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Kashmiri",
+   "voices": 2,
+   "female": 1,
+   "male": 1,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Nepali",
+   "voices": 2,
+   "female": 0,
+   "male": 2,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Manipuri",
+   "voices": 4,
+   "female": 4,
+   "male": 0,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Bodo",
+   "voices": 1,
+   "female": 0,
+   "male": 1,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Dogri",
+   "voices": 1,
+   "female": 1,
+   "male": 0,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Santali",
+   "voices": 5,
+   "female": 0,
+   "male": 5,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Sanskrit",
+   "voices": 3,
+   "female": 2,
+   "male": 1,
+   "tags": []
+  },
+  {
+   "tier": 3,
+   "language": "Maithili",
+   "voices": 2,
+   "female": 1,
+   "male": 1,
+   "tags": []
+  }
+ ]
+}
