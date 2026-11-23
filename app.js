@@ -164,6 +164,11 @@
     progAny();
     for (const el of $$("[data-prog]")) el.style.width = pct(el.dataset.prog).toFixed(2) + "%";
     for (const el of $$('[role="slider"][data-seek]')) el.setAttribute("aria-valuenow", Math.round(pct(el.dataset.seek)));
+    for (const c of $$(".gcard")) {
+      const k = c.dataset.key, on = isOn(k), p = pct(k) / 100, b = c.querySelector(".gcard-bars").children;
+      for (let i = 0; i < b.length; i++) b[i].classList.toggle("p", on && (i + 0.5) / b.length <= p);
+      c.querySelector(".gcard-time").textContent = on ? timeOf(k) : "Sample";
+    }
     heroCap.textContent = "हिन्दी · Hindi, female · " + (isOn(HERO_KEY) ? timeOf(HERO_KEY) : "press play");
     // now-playing waveform + time
     if (st.cur) {
@@ -504,6 +509,24 @@
   }
 
   /* =====================================================================
+   * Global voices (languages beyond India)
+   * ===================================================================== */
+  function renderGlobal(list) {
+    $("#gcards").replaceChildren(...list.map((g) => {
+      const key = "gl-" + g.url.split("/").pop().replace(/\.[^.]+$/, "");
+      const label = `${g.language}, ${g.region} sample`;
+      ITEMS[key] = { url: g.url, type: g.type, label, native: g.native, title: `${g.language} · ${g.region}`, sub: "Global voice sample · WAV" };
+      return h("button.gcard", { type: "button", dataset: { key, label }, "aria-label": `Play ${label}`, onclick: () => toggle(key) },
+        h("span.gcard-top", null, h("span.gcard-native", { text: g.native }), h("span.gcard-code", { text: g.code })),
+        h("span.gcard-name", null, h("b", { text: g.language }), h("span", { text: g.region })),
+        h("span.gcard-play", null,
+          h("span.gcard-btn.ico", { html: ICON(10), "aria-hidden": "true" }),
+          h("span.gcard-bars", { "aria-hidden": "true" }, bars(key, 28).map((v) => h("i", { style: `height:${v}%` }))),
+          h("span.gcard-time", { text: "Sample" })));
+    }));
+  }
+
+  /* =====================================================================
    * Telephony
    * ===================================================================== */
   function renderTelephony(t) {
@@ -813,14 +836,16 @@
     initGlyphs();
     initCaps();
     const fail = (sel, what) => (err) => { console.error(err); const el = $(sel); if (el) el.replaceChildren(h("p.loading", { text: `Couldn't load ${what}. Please refresh.` })); };
-    const [pricing, langs, voices, tel] = await Promise.allSettled([
+    const [pricing, langs, voices, tel, glob] = await Promise.allSettled([
       loadJSON("data/pricing.json"), loadJSON("data/languages.json"),
       loadJSON("data/voice-samples.json"), loadJSON("data/telephony-samples.json"),
+      loadJSON("data/global-voices.json"),
     ]);
     const langData = langs.status === "fulfilled" ? langs.value : null;
     initMarquees(langData);
     if (langData && voices.status === "fulfilled") renderLibrary(voices.value, langData);
     else fail("#lib", "voices")(langs.reason || voices.reason);
+    glob.status === "fulfilled" ? renderGlobal(glob.value) : fail("#gcards", "global voices")(glob.reason);
     tel.status === "fulfilled" ? renderTelephony(tel.value) : fail("#tel-rows", "telephony samples")(tel.reason);
     pricing.status === "fulfilled" ? renderRates(pricing.value, langData) : fail("#rates-root", "rates")(pricing.reason);
     sync();

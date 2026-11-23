@@ -14,6 +14,7 @@ reach-map.html        the animated globe embedded in the Reach section (d3 + wor
 data/pricing.json     the three rate-card tabs and their tables
 data/languages.json   tiers, tier prices, per-language voice counts, tags and native-script names
 data/voice-samples.json      one entry per voice sample (F / M / F1 / F2 buttons)
+data/global-voices.json  the six "Global voices" cards (language, region, native name, code, sample URL)
 data/telephony-samples.json  telephony lede, specs and the 12 domains
 data/transcripts/     mirrored transcript JSON (fallback while GCS has no CORS)
 scripts/sync-transcripts.mjs refreshes data/transcripts/ from GCS

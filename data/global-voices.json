@@ -1,0 +1,50 @@
+[
+  {
+    "language": "Spanish",
+    "region": "Spain",
+    "native": "Español",
+    "code": "ES",
+    "url": "https://storage.googleapis.com/arctic-engine-public/SpainSpanishSample.wav",
+    "type": "audio/wav"
+  },
+  {
+    "language": "Zulu",
+    "region": "South Africa",
+    "native": "isiZulu",
+    "code": "ZU",
+    "url": "https://storage.googleapis.com/arctic-engine-public/Zulusample.wav",
+    "type": "audio/wav"
+  },
+  {
+    "language": "Japanese",
+    "region": "Japan",
+    "native": "日本語",
+    "code": "JA",
+    "url": "https://storage.googleapis.com/arctic-engine-public/JapaneseSample.wav",
+    "type": "audio/wav"
+  },
+  {
+    "language": "French",
+    "region": "Canada",
+    "native": "Français",
+    "code": "FR-CA",
+    "url": "https://storage.googleapis.com/arctic-engine-public/CanadaFrench.wav",
+    "type": "audio/wav"
+  },
+  {
+    "language": "Swedish",
+    "region": "Sweden",
+    "native": "Svenska",
+    "code": "SV",
+    "url": "https://storage.googleapis.com/arctic-engine-public/Swedishsample.wav",
+    "type": "audio/wav"
+  },
+  {
+    "language": "French",
+    "region": "France",
+    "native": "Français",
+    "code": "FR",
+    "url": "https://storage.googleapis.com/arctic-engine-public/FranceFrenchSample.wav",
+    "type": "audio/wav"
+  }
+]

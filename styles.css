@@ -234,6 +234,37 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .op img { width: 56px; height: 56px; margin: -6px; flex: none; }
 .reach iframe { display: block; width: 100%; height: clamp(440px, 48vw, 640px); border: 0; background: transparent; min-width: 0; }
 
+/* ------------------------------------------------------------ global voices */
+.global { gap: 40px; padding-top: clamp(56px, 7vw, 104px); padding-bottom: clamp(64px, 7vw, 104px); border-top: 1px solid var(--border-subtle); }
+.gcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(max(140px, calc((100% - 24px) / 3)), 1fr)); gap: 12px; }
+.gcard {
+  position: relative; display: flex; flex-direction: column; gap: clamp(14px, 2vw, 22px); min-width: 0;
+  padding: clamp(14px, 2vw, 22px); text-align: left; border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle); background: var(--neutral-0); color: var(--deep-900); cursor: pointer;
+  font-family: var(--font-body); overflow: hidden;
+  transition: background var(--duration-base), border-color var(--duration-base), transform var(--duration-fast);
+}
+.gcard:hover { border-color: var(--deep-900); }
+.gcard:active { transform: scale(0.99); }
+.gcard.on { background: var(--ice-50); border-color: var(--deep-900); }
+.gcard-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; min-width: 0; }
+.gcard-native { font-family: var(--font-indic), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: clamp(22px, 2.6vw, 34px); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gcard.on .gcard-native { color: var(--ice-700); }
+.gcard-code { flex: none; font-family: var(--font-mono); font-size: 10px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-secondary); padding: 3px 6px; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); }
+.gcard-name { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gcard-name b { font-weight: 600; font-size: var(--text-sm); }
+.gcard-name span { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+.gcard-play { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.gcard-btn { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1px solid var(--deep-900); background: transparent; color: var(--deep-900); }
+.gcard.on .gcard-btn { background: var(--deep-900); color: var(--neutral-0); }
+.gcard-bars { flex: 1; min-width: 0; height: 28px; display: flex; align-items: center; gap: 2px; }
+.gcard-bars i { flex: 1; min-width: 1px; border-radius: 1px; background: var(--neutral-300); }
+.gcard.on .gcard-bars i { background: var(--ice-200); }
+.gcard.on .gcard-bars i.p { background: var(--ice-600); }
+.gcard-time { flex: none; font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+.global-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 24px; border-top: 1px solid var(--border-subtle); }
+.global-foot p { margin: 0; max-width: 560px; color: var(--text-secondary); line-height: 1.55; text-wrap: pretty; }
+
 /* ------------------------------------------------------------ voice library */
 .lib { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 32px 36px; align-items: start; }
 .tier { display: flex; flex-direction: column; min-width: 0; }
