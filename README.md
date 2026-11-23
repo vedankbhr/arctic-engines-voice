@@ -2,15 +2,15 @@
 
 Static marketing site for Arctic Engines' Voice AI offering: a voice library, telephony samples with a transcript viewer, and a rate card.
 
-The layout implements **Voice AI Site v5** from the "Arctic Engines Voice Redesign" Claude Design project. Its colours, spacing and motion come from the Arctic Engines design-system tokens, copied into the top of `styles.css`.
+The layout implements **Voice AI Site v8** from the "Arctic Engines Voice Redesign" Claude Design project. Its colours, spacing and motion come from the Arctic Engines design-system tokens, copied into the top of `styles.css`.
 
 Plain HTML/CSS/JS, no build step. Hosted on GitHub Pages from `main` / root.
 
 ```
-index.html            page shell (hero, iceberg diagram, section headings, footer, player bar, drawer)
+index.html            page shell (hero, marquees, capabilities, process, reach, section headings, footer, player bar, drawer)
 styles.css            all styling (design-system tokens at the top in :root)
-app.js                renders everything from data/*.json; one shared audio engine for every play button
-reach-map.html        the animated globe embedded in the overview (d3 + world-atlas from CDNs)
+app.js                renders library, telephony and rates from data/*.json, draws the hero glyph iceberg and marquees; one shared audio engine for every play button
+reach-map.html        the animated globe embedded in the Reach section (d3 + world-atlas from CDNs)
 data/pricing.json     the three rate-card tabs and their tables
 data/languages.json   tiers, tier prices, per-language voice counts, tags and native-script names
 data/voice-samples.json      one entry per voice sample (F / M / F1 / F2 buttons)

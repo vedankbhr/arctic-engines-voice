@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Arctic Engines · Voice AI data, evals and telephony speech</title>
-  <meta name="description" content="Consented voice data, native-speaker evals and telephony speech for TTS, ASR and voice agent teams. 219 voices across 22 Indic languages + Indian English, and 500+ hours of phone-line conversations.">
-  <meta name="theme-color" content="#FFFFFF">
+  <meta name="description" content="Consented voice data, native-speaker evals and telephony speech for TTS, ASR and voice agent teams. 200+ voices across 23 languages, and 500+ hours of phone-line conversations.">
+  <meta name="theme-color" content="#F7F7F4">
   <link rel="canonical" href="https://vedankbhr.github.io/arctic-engines-voice/">
 
   <meta property="og:type" content="website">
@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Mukta:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Mukta:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Bengali:wght@500&family=Noto+Sans+Tamil:wght@500&family=Noto+Sans+Telugu:wght@500&family=Noto+Sans+Kannada:wght@500&family=Noto+Sans+Malayalam:wght@500&family=Noto+Sans+Gujarati:wght@500&family=Noto+Sans+Gurmukhi:wght@500&family=Noto+Sans+Oriya:wght@500&family=Noto+Sans+Arabic:wght@500&family=Noto+Sans+Ol+Chiki:wght@500&family=Noto+Sans+Meetei+Mayek:wght@500&display=swap">
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
@@ -32,103 +32,177 @@
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- ============ NAV ============ -->
-  <nav class="nav" aria-label="Main">
-    <a class="nav-brand" href="#top" aria-label="Arctic Engines, back to top">
-      <img src="assets/ae-iceberg.png" alt="" width="28" height="28">
-      <span>Arctic Engines</span>
-    </a>
-    <div class="nav-links">
-      <a href="#library">Voice library</a>
-      <a href="#telephony">Telephony</a>
-      <a href="#rates">Rate card</a>
+  <header class="nav">
+    <div class="nav-in">
+      <a class="nav-brand" href="#overview" aria-label="Arctic Engines, back to top">
+        <img src="assets/ae-iceberg.png" alt="" width="22" height="26"><span>Arctic Engines</span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#capabilities">Capabilities</a>
+        <a href="#library">Voice library</a>
+        <a href="#telephony">Telephony</a>
+        <a href="#rates">Rate card</a>
+      </nav>
+      <div class="nav-end">
+        <a class="nav-text" href="#library">Listen</a>
+        <a class="nav-cta" href="mailto:vedank@arcticengines.ai">Talk to us</a>
+      </div>
     </div>
-    <a class="btn btn-primary btn-nav" href="mailto:vedank@arcticengines.ai">Talk to us</a>
-  </nav>
+  </header>
 
   <main id="main">
-    <!-- ============ OVERVIEW ============ -->
-    <section id="overview" class="container overview">
-      <div class="hero">
-        <div class="hero-copy">
-          <h1 class="display">One partner, the entire voice <em class="serif">pipeline.</em></h1>
-          <p class="hero-lede">Consented voice data, native-speaker evals and telephony speech for TTS, ASR and voice agent teams.</p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary btn-lg" href="#library">Hear the voices</a>
-            <a class="btn btn-secondary btn-lg" href="mailto:vedank@arcticengines.ai">Talk to us</a>
+    <!-- ============ HERO ============ -->
+    <section id="overview" class="hero" data-screen-label="Hero">
+      <div class="hero-copy">
+        <span class="label">Human data for voice AI</span>
+        <h1 class="display" aria-label="Voice data for TTS, ASR, agents, evals and cloning">
+          <span class="ln ln-1" aria-hidden="true"><span>Voice data</span></span>
+          <span class="ln ln-2" aria-hidden="true"><span>for <span class="hero-word first" id="hero-word"><span>TTS.</span></span></span></span>
+        </h1>
+        <p class="hero-lede">Consented voice data, native-speaker evals and real phone-line speech for TTS, ASR and voice agent teams.</p>
+        <div class="hero-ctas">
+          <div class="pair">
+            <a class="btn btn-primary" href="#library">Hear the voices<span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="mailto:vedank@arcticengines.ai">Talk to us</a>
           </div>
-        </div>
-
-        <div class="berg" id="berg" aria-label="What ships and what powers it" role="group">
-          <span class="berg-cap berg-cap-top">What ships</span>
-          <span class="berg-cap berg-cap-bottom">What powers it</span>
-          <div class="berg-water" aria-hidden="true"></div>
-          <img class="berg-img" src="assets/ae-iceberg.png" alt="Arctic Engines iceberg" width="440" height="512">
-
-          <a class="berg-above" href="#rates" data-tab="0" style="top:23%">
-            <span class="berg-label"><span class="berg-n">01</span><span>Voice cloning</span></span>
-            <span class="berg-line"></span><span class="berg-dot"></span>
-          </a>
-          <a class="berg-above" href="#rates" data-tab="1" style="top:30%">
-            <span class="berg-label"><span class="berg-n">02</span><span>TTS &amp; voice evals</span></span>
-            <span class="berg-line"></span><span class="berg-dot"></span>
-          </a>
-          <a class="berg-above" href="#rates" data-tab="2" style="top:37%">
-            <span class="berg-label"><span class="berg-n">03</span><span>ASR &amp; telephony</span></span>
-            <span class="berg-line"></span><span class="berg-dot"></span>
-          </a>
-
-          <div class="berg-below" style="top:51%">
-            <span class="berg-dot"></span><span class="berg-line"></span>
-            <span class="berg-stat"><b>Workforce</b><span>India-scale, via Apna</span></span>
-          </div>
-          <div class="berg-below" style="top:60.5%">
-            <span class="berg-dot"></span><span class="berg-line"></span>
-            <span class="berg-stat"><b>Native speakers</b><span>across Indic languages</span></span>
-          </div>
-          <div class="berg-below" style="top:70%">
-            <span class="berg-dot"></span><span class="berg-line"></span>
-            <span class="berg-stat"><b>Human QC</b><span>two-level review</span></span>
-          </div>
+          <button class="hero-play" id="hero-play" type="button" data-key="Hindi_Female" data-label="Hindi sample">
+            <span class="ring ico" aria-hidden="true"></span>
+            <span id="hero-cap">हिन्दी · Hindi, female · press play</span>
+          </button>
         </div>
       </div>
+      <div class="hero-art"><canvas id="glyphs" aria-hidden="true"></canvas></div>
+    </section>
 
-      <div class="reach" role="group" aria-label="Where we operate">
-        <div class="reach-copy">
-          <span class="reach-op">
-            <img src="assets/apna-mark.png" alt="apna" width="88" height="88">
-            <span class="eyebrow reach-live"><span class="live-dot" aria-hidden="true"></span><span>Operated by Apna Group</span></span>
-          </span>
-          <span class="reach-title">India's market leader, <em class="serif">going global.</em></span>
-          <span class="reach-text">The same India-scale operation, now opening the US, Europe, Asia and Africa — new languages coming soon.</span>
+    <!-- ============ LANGUAGES MARQUEE ============ -->
+    <section id="languages" class="langs" data-screen-label="Languages">
+      <div class="langs-head">
+        <span class="langs-title">23 languages. Native speakers in <em class="acc">every one.</em></span>
+        <a class="langs-link" href="#library">Hear them all ↓</a>
+      </div>
+      <div class="chips mask-x" id="chips" aria-label="Languages covered">
+        <div class="track" id="chips-a"></div>
+        <div class="track rev" id="chips-b"></div>
+      </div>
+    </section>
+
+    <!-- ============ AT A GLANCE ============ -->
+    <div class="ticker mask-x-sm" aria-label="At a glance">
+      <div class="track" id="ticker">
+        <div class="tick"><span class="tick-v">23</span><span class="tick-t"><span class="tick-l">languages</span><span class="tick-k">Voice library</span></span></div>
+        <div class="tick"><span class="tick-v">200+</span><span class="tick-t"><span class="tick-l">consented voices</span><span class="tick-k">In stock</span></span></div>
+        <div class="tick"><span class="tick-v">500+ hrs</span><span class="tick-t"><span class="tick-l">phone-line speech</span><span class="tick-k">Telephony</span></span></div>
+        <div class="tick"><span class="tick-v">12</span><span class="tick-t"><span class="tick-l">business domains</span><span class="tick-k">Telephony</span></span></div>
+        <div class="tick"><span class="tick-v">95%+</span><span class="tick-t"><span class="tick-l">two-level human QC</span><span class="tick-k">Every dataset</span></span></div>
+        <div class="tick"><span class="tick-v">60M+</span><span class="tick-t"><span class="tick-l">workforce</span><span class="tick-k">Via Apna</span></span></div>
+      </div>
+    </div>
+
+    <!-- ============ CAPABILITIES ============ -->
+    <section id="capabilities" class="section" data-screen-label="Capabilities" style="gap:56px">
+      <div class="sec-head">
+        <span class="label">Capabilities</span>
+        <div class="sec-row">
+          <h2 class="h2" style="max-width:760px">Three products. One <em class="acc">pipeline.</em></h2>
+          <p class="lede" style="max-width:380px">Each runs on the same consented, native-speaker workforce and the same two-level human QC.</p>
         </div>
-        <div class="reach-map">
-          <iframe src="reach-map.html" title="Globe: India today, expanding to Africa, Europe, the United States and Asia" loading="lazy"></iframe>
+      </div>
+      <div class="caps" data-reveal>
+        <article class="cap">
+          <div class="cap-top"><span class="cap-n">01</span><span class="cap-k">Voice cloning</span></div>
+          <div class="cap-art wave" id="cap-wave" aria-hidden="true"></div>
+          <div class="cap-body">
+            <h3>Voice cloning</h3>
+            <p>Consented single-speaker voices, one hour each, with full voice rights. 200+ in stock across 23 languages.</p>
+          </div>
+          <a class="cap-go" href="#rates" data-tab="0">From $110 per voice-hour →</a>
+        </article>
+        <article class="cap">
+          <div class="cap-top"><span class="cap-n">02</span><span class="cap-k">TTS &amp; evals</span></div>
+          <div class="cap-art pair" id="cap-pair" aria-hidden="true"></div>
+          <div class="cap-body">
+            <h3>TTS &amp; voice evals</h3>
+            <p>Native-speaker pairwise preference, clone quality, accent regression and pronunciation, with audited raters.</p>
+          </div>
+          <a class="cap-go" href="#rates" data-tab="1">From $8 per evaluator-hour →</a>
+        </article>
+        <article class="cap">
+          <div class="cap-top"><span class="cap-n">03</span><span class="cap-k">ASR &amp; telephony</span></div>
+          <div class="cap-art lanes" id="cap-lanes" aria-hidden="true"></div>
+          <div class="cap-body">
+            <h3>ASR &amp; telephony</h3>
+            <p>Real phone-line conversations in Hindi and Indian English. Dual-channel audio with segment-level transcripts.</p>
+          </div>
+          <a class="cap-go" href="#rates" data-tab="2">From $6 per audio hour →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="process" data-screen-label="Process">
+      <div class="process-in">
+        <div class="process-copy">
+          <div class="sec-head">
+            <span class="label">Process</span>
+            <h2 class="h2">Brief to dataset in three <em class="acc">steps.</em></h2>
+          </div>
+          <div class="steps" id="steps">
+            <button class="step on" type="button" aria-pressed="true"><span class="step-n">I</span><span class="step-t"><b>Brief</b><span>Share languages, personas, domains and volume. We return a spec and a calibration batch.</span></span></button>
+            <button class="step" type="button" aria-pressed="false"><span class="step-n">II</span><span class="step-t"><b>Collect</b><span>Native speakers record or take calls through the Apna network, with consent captured per session.</span></span></button>
+            <button class="step" type="button" aria-pressed="false"><span class="step-n">III</span><span class="step-t"><b>Deliver</b><span>Audio plus one JSON per recording, after two-level human QC at 95%+.</span></span></button>
+          </div>
+        </div>
+        <div class="code" aria-hidden="true">
+          <div class="code-bar"><i></i><i></i><i></i><span>submission_5a94bf.json</span><b></b></div>
+          <div class="code-body" id="code"></div>
+          <div class="code-foot"><span><i></i><span id="code-status">Writing segments…</span></span><span>Healthcare · Hindi · dual-channel</span></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ 01 VOICE LIBRARY ============ -->
-    <section id="library" class="container section">
-      <header class="sec-head">
-        <div class="sec-num"><span class="num">01</span><span class="eyebrow">Voice library</span></div>
-        <div class="sec-title">
-          <h2 class="h2">Hear the <em class="serif">data.</em></h2>
-          <p class="sec-lede">Consented, single-speaker voices in 23 languages. Each ships as one hour of speech: 12 recordings of about five minutes. Press any voice to listen.</p>
+    <!-- ============ REACH ============ -->
+    <section id="reach" class="reach" data-screen-label="Reach">
+      <div class="reach-copy">
+        <div class="sec-head">
+          <span class="label">Reach</span>
+          <h2 class="h2">India-scale, going <em class="acc">global.</em></h2>
+          <p class="lede">India's market leader in human voice data, now opening the US, Europe, Asia and Africa.</p>
         </div>
-      </header>
-      <div class="lib" id="lib"><p class="loading">Loading voices…</p></div>
+        <div class="regions">
+          <div class="region live"><span class="dot"></span><span class="nm"><b>India</b><span>23 languages · 200+ voices</span></span><span class="st">Live</span></div>
+          <div class="region"><span class="dot"></span><span class="nm"><b>United States</b></span><span class="st">Q1 2027</span></div>
+          <div class="region"><span class="dot"></span><span class="nm"><b>Europe</b></span><span class="st">Q1 2027</span></div>
+          <div class="region"><span class="dot"></span><span class="nm"><b>Asia</b></span><span class="st">Q1 2027</span></div>
+          <div class="region"><span class="dot"></span><span class="nm"><b>Africa</b></span><span class="st">Q1 2027</span></div>
+        </div>
+        <p class="soon"><span>Q1 2027 ·</span> Spanish, French, Japanese, Swedish, Tagalog, Greek, Ukrainian, Zulu, Afrikaans.</p>
+        <span class="op"><img src="assets/apna-mark.png" alt="apna" width="56" height="56">Operated by Apna Group</span>
+      </div>
+      <iframe data-reveal src="reach-map.html" title="Globe: India today, expanding to Africa, Europe, the United States and Asia" loading="lazy"></iframe>
+    </section>
+
+    <!-- ============ VOICE LIBRARY ============ -->
+    <section id="library" class="section" data-screen-label="Voice library" style="padding-bottom:clamp(64px,7vw,96px)">
+      <div class="sec-head">
+        <span class="label">Voice library</span>
+        <div class="sec-row">
+          <h2 class="h2">Press play on any <em class="acc">voice.</em></h2>
+          <p class="lede">Consented, single-speaker voices in 23 languages. Each ships as one hour of speech: 12 recordings of about five minutes. Press any voice to listen.</p>
+        </div>
+      </div>
+      <div class="lib" id="lib" data-reveal><p class="loading">Loading voices…</p></div>
       <p class="fine">USD per voice-hour; evals per hour · Custom collection in all 23 languages · One Urdu voice has no gender recorded</p>
     </section>
 
-    <!-- ============ 02 TELEPHONY ============ -->
-    <section id="telephony" class="container section section-rule">
-      <header class="sec-head">
-        <div class="sec-num"><span class="num">02</span><span class="eyebrow">Telephony data</span></div>
-        <div class="sec-title">
-          <h2 class="h2 h2-sm">Real phone-line conversations, <em class="serif">transcribed.</em></h2>
-          <p class="sec-lede" id="tel-lede"></p>
+    <!-- ============ TELEPHONY ============ -->
+    <section id="telephony" class="section tel-wrap" data-screen-label="Telephony">
+      <div class="sec-head">
+        <span class="label">Telephony data</span>
+        <div class="sec-row">
+          <h2 class="h2" style="max-width:620px">Real phone-line conversations, <em class="acc">transcribed.</em></h2>
+          <p class="lede" id="tel-lede"></p>
         </div>
-      </header>
+      </div>
       <div class="tel">
         <div class="tel-table">
           <div class="tel-head" aria-hidden="true">
@@ -141,44 +215,79 @@
         <aside class="spec" aria-labelledby="spec-title">
           <div class="spec-head" id="spec-title">Specification</div>
           <dl id="tel-specs"></dl>
-          <a class="btn btn-primary btn-block" href="mailto:vedank@arcticengines.ai?subject=Telephony%20speech%20data">Request the 10 hr sample set</a>
+          <a class="btn btn-primary btn-md btn-block" href="mailto:vedank@arcticengines.ai?subject=Telephony%20speech%20data">Request the 10 hr sample set<span aria-hidden="true">→</span></a>
           <span class="fine" id="tel-sample"></span>
         </aside>
       </div>
     </section>
 
-    <!-- ============ 03 RATE CARD ============ -->
-    <section id="rates" class="container section section-rule section-last">
-      <header class="sec-head">
-        <div class="sec-num"><span class="num">03</span><span class="eyebrow">Rate card</span></div>
-        <div class="sec-title">
-          <h2 class="h2 h2-sm">Rates across the <em class="serif">pipeline.</em></h2>
+    <!-- ============ CONSENT ============ -->
+    <section id="consent" class="consent" data-screen-label="Consent">
+      <div class="consent-in">
+        <div class="consent-head">
+          <div><span class="label">Consent</span><h2 class="h2">Consent is non-<em class="acc">negotiable.</em></h2></div>
+          <p class="lede">Explicit consent, PII removal, one-time fee with perpetual usage rights. DPDPA-aligned.</p>
+        </div>
+        <div class="consent-grid">
+          <div class="consent-item"><span class="n">01</span><b>Explicit consent</b><span>Every speaker gives explicit consent before a session is recorded.</span></div>
+          <div class="consent-item"><span class="n">02</span><b>PII removed</b><span>Personal identifiers are removed before delivery.</span></div>
+          <div class="consent-item"><span class="n">03</span><b>Perpetual rights</b><span>One-time fee, perpetual usage rights.</span></div>
+          <div class="consent-item"><span class="n">04</span><b>Two-level QC</b><span>Two rounds of human review, 95%+ accuracy.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RATE CARD ============ -->
+    <section id="rates" class="section rates" data-screen-label="Rate card">
+      <div class="sec-head">
+        <span class="label">Rate card</span>
+        <div class="sec-row">
+          <h2 class="h2">Rates across the <em class="acc">pipeline.</em></h2>
           <div class="tabs" role="tablist" aria-label="Rate card">
             <button role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true"><span class="tab-n">01</span><span>Voice cloning</span></button>
             <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" tabindex="-1"><span class="tab-n">02</span><span>TTS &amp; voice evals</span></button>
             <button role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1"><span class="tab-n">03</span><span>ASR &amp; telephony</span></button>
           </div>
         </div>
-      </header>
+      </div>
       <div id="rates-root"><p class="loading">Loading rates…</p></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact" data-screen-label="Contact">
+      <img src="assets/ae-iceberg.png" alt="" width="64" height="74">
+      <h2 class="h2">Let's build your <em class="acc">data</em> advantage.</h2>
+      <p class="lede">In-stock voices ship in days. Telephony sample sets on request.</p>
+      <div class="contact-ctas">
+        <a class="btn btn-primary" href="mailto:vedank@arcticengines.ai">Email us<span aria-hidden="true">→</span></a>
+        <a class="btn btn-secondary" href="#library">Hear the voices</a>
+      </div>
     </section>
   </main>
 
-  <!-- ============ CONTACT ============ -->
-  <footer id="contact" class="foot">
-    <div class="container foot-main">
-      <h2 class="foot-title">Let's build your <em class="serif">data</em> advantage.</h2>
-      <div class="foot-cta">
-        <a class="btn btn-primary btn-lg" href="mailto:vedank@arcticengines.ai">Email us</a>
-        <div class="foot-links">
-          <a href="mailto:vedank@arcticengines.ai">vedank@arcticengines.ai</a>
-          <span aria-hidden="true">·</span>
-          <a href="https://www.arcticengines.ai/" rel="noopener">arcticengines.ai</a>
-        </div>
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <span class="foot-brand"><img src="assets/ae-iceberg.png" alt="" width="26" height="30"><b>Arctic Engines</b></span>
+        <span class="sub">Human data for frontier AI.</span>
+      </div>
+      <div class="foot-col">
+        <span class="k">Product</span>
+        <a href="#capabilities">Capabilities</a><a href="#library">Voice library</a><a href="#telephony">Telephony</a><a href="#rates">Rate card</a>
+      </div>
+      <div class="foot-col">
+        <span class="k">Contact</span>
+        <a href="mailto:vedank@arcticengines.ai">vedank@arcticengines.ai</a>
+        <a href="https://www.arcticengines.ai/" rel="noopener">arcticengines.ai</a>
+      </div>
+      <div class="foot-col">
+        <span class="k">Operated by</span>
+        <span class="foot-apna"><img src="assets/apna-mark.png" alt="apna" width="48" height="48"><span>Apna Group · enterprise-grade AI human data operations</span></span>
       </div>
     </div>
-    <div class="container foot-bar">
-      <span class="foot-apna"><img src="assets/apna-mark.png" alt="apna" width="36" height="36">Apna Group · enterprise-grade AI human data operations</span>
+    <div class="foot-bar">
+      <span>© 2026 Arctic Engines · DPDPA-aligned</span>
       <span>Backed by Lightspeed · Tiger Global · Insight Partners · Peak XV</span>
     </div>
   </footer>
@@ -215,7 +324,7 @@
     </div>
     <div class="dr-player">
       <button class="dr-btn" id="dr-toggle" type="button" aria-label="Play recording"></button>
-      <div class="dr-seek" id="dr-seek" role="slider" aria-label="Seek recording" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="track"><div class="fill" id="dr-fill"></div></div></div>
+      <div class="dr-seek" id="dr-seek" role="slider" aria-label="Seek recording" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="track-l"><div class="fill" id="dr-fill"></div></div></div>
       <span class="dr-time" id="dr-time">0:00</span>
     </div>
     <div class="dr-legend">
