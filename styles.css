@@ -111,10 +111,10 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .nav-cta:hover { background: var(--ink-hover); color: var(--page); }
 
 /* ------------------------------------------------------------ hero */
-.hero { max-width: 1280px; margin: 0 auto; padding: clamp(56px, 7vw, 112px) var(--pad-x) clamp(48px, 6vw, 96px); display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; scroll-margin-top: 72px; }
-.hero-copy { container-type: inline-size; flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: clamp(28px, 3vw, 40px); position: relative; z-index: 1; }
+.hero { max-width: 1280px; margin: 0 auto; padding: clamp(32px, min(7vw, 9vh), 112px) var(--pad-x) clamp(32px, min(6vw, 7vh), 96px); display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; scroll-margin-top: 72px; }
+.hero-copy { container-type: inline-size; flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: clamp(20px, min(3vw, 4vh), 40px); position: relative; z-index: 1; }
 .hero .label { color: var(--text-secondary); gap: 14px; animation: aeRise 700ms var(--ease-out) both; }
-.display { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(52px, min(10vw, 22.4cqi), 176px); line-height: 0.88; letter-spacing: -0.06em; }
+.display { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(52px, min(10vw, 22.4cqi, 19vh), 176px); line-height: 0.88; letter-spacing: -0.06em; }
 .display .ln { display: block; overflow: hidden; white-space: nowrap; }
 .display .ln > span { display: block; animation: aeRise 1100ms var(--ease-out) 100ms both; }
 .display .ln-1 { padding-bottom: 0.04em; }
@@ -131,7 +131,7 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .hero-play { display: flex; align-items: center; gap: 12px; padding: 0; border: none; background: none; cursor: pointer; color: var(--ink); font-family: var(--font-mono); font-size: 12px; }
 .hero-play:hover { color: var(--neutral-600); }
 .hero-play .ring { width: 38px; height: 38px; flex: none; border-radius: 50%; border: 1px solid var(--neutral-300); background: rgba(255, 255, 255, 0.6); }
-.hero-art { flex: 1 1 300px; min-width: 0; height: clamp(420px, 50vw, 680px); position: relative; }
+.hero-art { flex: 1 1 300px; min-width: 0; height: min(clamp(420px, 50vw, 680px), max(380px, 74vh)); position: relative; }
 .hero-art canvas { position: absolute; top: -10%; bottom: -10%; left: -12%; right: -28%; width: 140%; height: 120%; pointer-events: none; animation: aeFade 1800ms var(--ease-out) 200ms both; }
 
 /* ------------------------------------------------------------ marquees */
