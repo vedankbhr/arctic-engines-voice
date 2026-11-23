@@ -301,7 +301,9 @@
     }
     const OUT = UL.concat(UR.slice(1), DR.slice().reverse().slice(1), DL.slice().reverse().slice(1, -1)).concat([UL[0]]);
     const edge = (a, b, gap) => {
-      const d = Math.hypot(b[0] - a[0], b[1] - a[1]), n = Math.max(1, Math.round(d / gap));
+      const d = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if (Math.min(a[1], b[1]) < -0.05) return;          // outline only above the waterline
+      const n = Math.max(1, Math.round(d / gap));
       for (let i = 0; i < n; i++) { const t = i / n, y = a[1] + (b[1] - a[1]) * t; pts.push({ x: a[0] + (b[0] - a[0]) * t, y, z: 0, g: G[(rnd() * G.length) | 0], u: y < -0.001, ph: rnd() * 6.28, e: 1 }); }
     };
     for (let i = 0; i < OUT.length - 1; i++) edge(OUT[i], OUT[i + 1], ST * 0.62);
@@ -309,15 +311,13 @@
     const mix = (a, b, t) => "rgb(" + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",") + ")";
     const PA = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => mix([14, 86, 112], [43, 184, 222], i / 7));
     const PB = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => mix([8, 32, 51], [20, 98, 130], i / 7));
-    const water = [];
-    [1.02, 1.22].forEach((R, k) => { const n = Math.round(R * 64); for (let i = 0; i < n; i++) { const th = i / n * 2 * Math.PI; water.push({ x: R * Math.cos(th), y: 0, z: R * 0.62 * Math.sin(th), k }); } });
     const FONT = "'Noto Sans Devanagari','Noto Sans Bengali','Noto Sans Tamil','Noto Sans Telugu','Noto Sans Kannada','Noto Sans Malayalam','Noto Sans Gujarati','Noto Sans Gurmukhi','Noto Sans Oriya',sans-serif";
 
     let W = 0, H = 0, dpr = 1, ang = 0, vis = true, last = performance.now(), pulse = 0;
     const tilt = 0.17, ct = Math.cos(tilt), stt = Math.sin(tilt);
     const draw = (now) => {
       const dt = Math.min(64, now - last); last = now; void dt;
-      if (!reduceMotion) ang = Math.sin(now / 1000 * 0.2) * 0.85;
+      if (!reduceMotion) ang = Math.sin(now / 1000 * 0.42) * 0.95;
       pulse += ((st.cur && !audio.paused ? 1 : 0) - pulse) * 0.06;
       if (!reduceMotion) for (let i = 0; i < 5; i++) { const p = pts[(Math.random() * pts.length) | 0]; p.g = G[(Math.random() * G.length) | 0]; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
@@ -325,19 +325,18 @@
       const ca = Math.cos(ang), sa = Math.sin(ang), tt = now / 1000;
       ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.globalAlpha = 1;
       const proj = (x, y, z) => { const x1 = x * ca - z * sa, z1 = x * sa + z * ca; const y1 = y * ct - z1 * stt, z2 = y * stt + z1 * ct; const pp = 2.7 / (2.7 + z2); return [cx + x1 * S * pp, cy - y1 * S * pp, z2, pp]; };
-      ctx.font = "400 " + Math.round(S * 0.075) + "px Geist Mono, monospace";
-      for (const w of water) { const q = proj(w.x, w.y, w.z); const a = (0.08 + 0.24 * (1 - (q[2] + 1.6) / 3.2)) * (w.k ? 0.55 : 1); ctx.fillStyle = "rgba(10,10,10," + a.toFixed(3) + ")"; ctx.fillText("–", q[0], q[1]); }
       const fs = Math.max(9, S * 0.058), eA = 0.9 * Math.pow(Math.abs(ca), 3);
       const B = [[], [], []];
       for (const p of pts) {
         const k = 1 + pulse * 0.07 * Math.sin(tt * 7 + p.ph);
         const q = proj(p.x * k, p.y, p.z * k);
         let a, col;
-        if (p.e) { a = eA; col = p.u ? "#0B2E45" : "#1998C0"; }
+        if (p.e) { a = p.u ? eA * 0.75 : eA; col = p.u ? "#1A5A78" : "#1998C0"; }
         else {
           const nz1 = p.n[0] * sa + p.n[1] * ca, nx1 = p.n[0] * ca - p.n[1] * sa;
           a = 0.04 + 0.96 * Math.pow(Math.max(0, 1 - (q[2] + 0.85) / 1.7), 2.2);
           if (nz1 > 0.15) a *= 0.35;
+          else if (p.u) a *= 0.55 + 0.45 * Math.min(1, Math.max(0, -nz1) / 0.4);
           const lit = Math.max(0, Math.min(1, -0.62 * nx1 - 0.78 * nz1));
           col = (p.u ? PB : PA)[Math.round(lit * 7)];
           a *= p.u ? 0.8 : 1;
