@@ -313,45 +313,54 @@
     const PB = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => mix([8, 32, 51], [20, 98, 130], i / 7));
     const FONT = "'Noto Sans Devanagari','Noto Sans Bengali','Noto Sans Tamil','Noto Sans Telugu','Noto Sans Kannada','Noto Sans Malayalam','Noto Sans Gujarati','Noto Sans Gurmukhi','Noto Sans Oriya',sans-serif";
 
+    const PAL = PA.concat(PB, ["#1998C0", "#1A5A78"]);   // 0-7 lit above, 8-15 lit below, 16-17 edges
+    const NA = 10;                                         // alpha levels
+    const groups = Array.from({ length: 3 * 18 * NA }, () => []);
     let W = 0, H = 0, dpr = 1, ang = 0, vis = true, last = performance.now(), pulse = 0;
     const tilt = 0.17, ct = Math.cos(tilt), stt = Math.sin(tilt);
     const draw = (now) => {
-      const dt = Math.min(64, now - last); last = now; void dt;
-      if (!reduceMotion) ang = Math.sin(now / 1000 * 0.42) * 0.95;
+            if (!reduceMotion) ang = Math.sin(now / 1000 * 0.42) * 0.95;
       pulse += ((st.cur && !audio.paused ? 1 : 0) - pulse) * 0.06;
       if (!reduceMotion) for (let i = 0; i < 5; i++) { const p = pts[(Math.random() * pts.length) | 0]; p.g = G[(Math.random() * G.length) | 0]; }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
       const S = Math.min(W / 2.6, H / 2.85), cx = W * 0.5, cy = H * 0.5 - 0.29 * S;
       const ca = Math.cos(ang), sa = Math.sin(ang), tt = now / 1000;
       ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.globalAlpha = 1;
-      const proj = (x, y, z) => { const x1 = x * ca - z * sa, z1 = x * sa + z * ca; const y1 = y * ct - z1 * stt, z2 = y * stt + z1 * ct; const pp = 2.7 / (2.7 + z2); return [cx + x1 * S * pp, cy - y1 * S * pp, z2, pp]; };
       const fs = Math.max(9, S * 0.058), eA = 0.9 * Math.pow(Math.abs(ca), 3);
-      const B = [[], [], []];
+      for (const g of groups) g.length = 0;
       for (const p of pts) {
         const k = 1 + pulse * 0.07 * Math.sin(tt * 7 + p.ph);
-        const q = proj(p.x * k, p.y, p.z * k);
-        let a, col;
-        if (p.e) { a = p.u ? eA * 0.75 : eA; col = p.u ? "#1A5A78" : "#1998C0"; }
+        const X = p.x * k, Y = p.y, Z = p.z * k;
+        const x1 = X * ca - Z * sa, z1 = X * sa + Z * ca, y1 = Y * ct - z1 * stt, z2 = Y * stt + z1 * ct, pp = 2.7 / (2.7 + z2);
+        let a, ci;
+        if (p.e) { a = p.u ? eA * 0.75 : eA; ci = p.u ? 17 : 16; }
         else {
           const nz1 = p.n[0] * sa + p.n[1] * ca, nx1 = p.n[0] * ca - p.n[1] * sa;
-          a = 0.04 + 0.96 * Math.pow(Math.max(0, 1 - (q[2] + 0.85) / 1.7), 2.2);
+          a = 0.04 + 0.96 * Math.pow(Math.max(0, 1 - (z2 + 0.85) / 1.7), 2.2);
           if (nz1 > 0.15) a *= 0.35;
           else if (p.u) a *= 0.55 + 0.45 * Math.min(1, Math.max(0, -nz1) / 0.4);
           const lit = Math.max(0, Math.min(1, -0.62 * nx1 - 0.78 * nz1));
-          col = (p.u ? PB : PA)[Math.round(lit * 7)];
+          ci = Math.round(lit * 7) + (p.u ? 8 : 0);
           a *= p.u ? 0.8 : 1;
         }
         if (a < 0.04) continue;
-        B[q[3] < 0.94 ? 0 : q[3] < 1.06 ? 1 : 2].push([p.g, q[0], q[1], a, col]);
+        p.sx = cx + x1 * S * pp; p.sy = cy - y1 * S * pp;
+        const bi = pp < 0.94 ? 0 : pp < 1.06 ? 1 : 2, ai = Math.min(NA - 1, (a * NA) | 0);
+        groups[(bi * 18 + ci) * NA + ai].push(p);
       }
-      [0.82, 1, 1.2].forEach((m, bi) => {
-        ctx.font = "500 " + (fs * m).toFixed(1) + "px " + FONT;
-        for (const g of B[bi]) { ctx.globalAlpha = g[3]; ctx.fillStyle = g[4]; ctx.fillText(g[0], g[1], g[2]); }
-      });
+      // far -> near; one style change per (colour, alpha) group instead of per glyph
+      for (let bi = 0; bi < 3; bi++) {
+        ctx.font = "500 " + (fs * [0.82, 1, 1.2][bi]).toFixed(1) + "px " + FONT;
+        for (let ci = 0; ci < 18; ci++) for (let ai = 0; ai < NA; ai++) {
+          const g = groups[(bi * 18 + ci) * NA + ai]; if (!g.length) continue;
+          ctx.globalAlpha = (ai + 0.5) / NA; ctx.fillStyle = PAL[ci];
+          for (let i = 0; i < g.length; i++) ctx.fillText(g[i].g, g[i].sx, g[i].sy);
+        }
+      }
       ctx.globalAlpha = 1;
     };
     const size = () => {
-      const r = cv.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1);
+      const r = cv.getBoundingClientRect(); dpr = Math.min(1.5, window.devicePixelRatio || 1);
       W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       if (reduceMotion && W) draw(0);
     };
@@ -359,7 +368,13 @@
     new ResizeObserver(size).observe(cv);
     if (reduceMotion) { document.fonts && document.fonts.ready.then(() => W && draw(0)); return; }
     new IntersectionObserver((es) => { vis = es[0].isIntersecting; }).observe(cv);
-    const frame = (now) => { requestAnimationFrame(frame); if (vis && W && !document.hidden) draw(now); };
+    let scrolling = false, scrollT = 0, lastDraw = 0;
+    addEventListener("scroll", () => { scrolling = true; clearTimeout(scrollT); scrollT = setTimeout(() => { scrolling = false; }, 160); }, { passive: true });
+    const frame = (now) => {
+      requestAnimationFrame(frame);
+      if (!vis || !W || document.hidden || scrolling || now - lastDraw < 32) return;   // ~30fps, and hold still while scrolling
+      lastDraw = now; draw(now);
+    };
     requestAnimationFrame(frame);
   }
 

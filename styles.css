@@ -98,7 +98,7 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .btn-block { display: flex; width: 100%; }
 
 /* ------------------------------------------------------------ nav */
-.nav { position: sticky; top: 0; z-index: 30; background: rgba(247, 247, 244, 0.82); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border-subtle); }
+.nav { position: sticky; top: 0; z-index: 30; background: rgba(247, 247, 244, 0.96); border-bottom: 1px solid var(--border-subtle); }
 .nav-in { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad-x); height: var(--nav-h); display: flex; align-items: center; gap: 32px; }
 .nav-brand { flex: none; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
 .nav-brand img { width: 22px; height: auto; }
@@ -148,7 +148,7 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .mask-x { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .mask-x-sm { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .chips { display: flex; flex-direction: column; gap: 12px; }
-.track { display: flex; width: max-content; animation: aeMarq 70s linear infinite; }
+.track { display: flex; width: max-content; animation: aeMarq 70s linear infinite; will-change: transform; }
 .track.rev { animation-name: aeMarqR; }
 .chip { flex: none; margin-right: 12px; display: flex; align-items: center; gap: 12px; height: 60px; padding: 0 22px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--neutral-0); white-space: nowrap; }
 .chip b { font-family: var(--font-indic), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 22px; line-height: 1; font-weight: 500; color: var(--deep-900); }
