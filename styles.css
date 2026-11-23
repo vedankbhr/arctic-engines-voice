@@ -145,8 +145,13 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .langs-head { max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 var(--pad-x); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px 40px; }
 .langs-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 3vw, 42px); letter-spacing: -0.045em; line-height: 1.05; }
 .langs-link { font-family: var(--font-mono); font-size: 12px; text-decoration: none; }
-.mask-x { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.mask-x-sm { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+/* edge fades as cheap overlays (a CSS mask over animating content repaints every frame) */
+.mask-x, .mask-x-sm { position: relative; }
+.mask-x::before, .mask-x::after, .mask-x-sm::before, .mask-x-sm::after { content: ""; position: absolute; top: 0; bottom: 0; z-index: 2; pointer-events: none; }
+.mask-x::before, .mask-x::after { width: 8%; }
+.mask-x-sm::before, .mask-x-sm::after { width: 6%; }
+.mask-x::before, .mask-x-sm::before { left: 0; background: linear-gradient(90deg, var(--page), rgba(247, 247, 244, 0)); }
+.mask-x::after, .mask-x-sm::after { right: 0; background: linear-gradient(270deg, var(--page), rgba(247, 247, 244, 0)); }
 .chips { display: flex; flex-direction: column; gap: 12px; }
 .track { display: flex; width: max-content; animation: aeMarq 70s linear infinite; will-change: transform; }
 .track.rev { animation-name: aeMarqR; }
@@ -188,8 +193,8 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .lane-row .rail { position: relative; flex: 1; height: 16px; border-bottom: 1px dashed var(--neutral-300); }
 .lane-row .rail i { position: absolute; top: 2px; bottom: 2px; border-radius: 2px; background: var(--ice-500); }
 .lane-row.c2 .rail i { background: var(--deep-500); }
-.scan { position: absolute; top: 0; bottom: 0; left: 48px; right: 14px; pointer-events: none; }
-.scan i { position: absolute; top: 18px; bottom: 18px; width: 1px; background: var(--deep-900); animation: aeScan 7s linear infinite; }
+.scan { position: absolute; top: 0; bottom: 0; left: 48px; right: 14px; pointer-events: none; overflow: hidden; }
+.scan i { position: absolute; top: 18px; bottom: 18px; left: 0; width: 100%; background: linear-gradient(90deg, transparent calc(100% - 1px), var(--deep-900) 0); animation: aeScan 7s linear infinite; will-change: transform; }
 .cap-body { display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .cap h3 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--text-xl); letter-spacing: -0.03em; }
 .cap p { margin: 0; font-size: var(--text-sm); line-height: 1.55; color: var(--text-secondary); text-wrap: pretty; }
@@ -539,7 +544,7 @@ body.drawer-open { overflow: hidden; }
 @keyframes aeFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes aeGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes aeWordIn { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes aeScan { from { left: 0; } to { left: 100%; } }
+@keyframes aeScan { from { transform: translateX(-100%); } to { transform: none; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: 0ms !important; }

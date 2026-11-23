@@ -60,7 +60,7 @@ const regionOf = f => {
   return null;
 };
 const svg = d3.select('#g');
-const proj = d3.geoOrthographic().scale(222).translate([230, 230]).clipAngle(90).precision(0.5);
+const proj = d3.geoOrthographic().scale(222).translate([230, 230]).clipAngle(90).precision(1);
 const path = d3.geoPath(proj);
 const stepsEl = document.getElementById('steps');
 STOPS.forEach(() => stepsEl.appendChild(document.createElement('i')));
@@ -121,18 +121,29 @@ fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then
     phase = 'move'; t0 = performance.now();
     caption();
   }
+  // Redraw only when something actually moves (rotation or an arc growing), at ~30fps,
+  // and not at all while the globe is off screen.
+  let onScreen = true, lastDraw = 0;
+  new IntersectionObserver((es) => { onScreen = es[0].isIntersecting; }).observe(document.getElementById('g'));
   d3.timer(() => {
+    if (!onScreen) return;
     const now = performance.now(), e = now - t0;
+    let changed = false, force = false;
     if (phase === 'hold') {
       const s = STOPS[idx];
-      if (s.key !== 'in' && (arcP[s.key] || 0) < 1) arcP[s.key] = Math.min(1, ease(Math.min(1, e / 1100)));
-      if (e > HOLD) next();
+      if (s.key !== 'in' && (arcP[s.key] || 0) < 1) {
+        const prev = arcP[s.key] || 0;
+        arcP[s.key] = Math.min(1, ease(Math.min(1, e / 1100)));
+        changed = arcP[s.key] !== prev; force = arcP[s.key] >= 1;
+      }
+      if (e > HOLD) { next(); changed = true; }
     } else {
       const p = ease(Math.min(1, e / MOVE));
       rot = [from[0] + (to[0] - from[0]) * p, from[1] + (to[1] - from[1]) * p];
-      if (e >= MOVE) { phase = 'hold'; t0 = now; if (STOPS[idx].key !== 'in') { visited.add(STOPS[idx].key); arcP[STOPS[idx].key] = 0.001; } paint(); }
+      changed = true;
+      if (e >= MOVE) { phase = 'hold'; t0 = now; if (STOPS[idx].key !== 'in') { visited.add(STOPS[idx].key); arcP[STOPS[idx].key] = 0.001; } paint(); force = true; }
     }
-    draw();
+    if (changed && (force || now - lastDraw >= 30)) { lastDraw = now; draw(); }
   });
 });
 </script>
