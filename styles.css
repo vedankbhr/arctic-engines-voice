@@ -111,10 +111,10 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .nav-cta:hover { background: var(--ink-hover); color: var(--page); }
 
 /* ------------------------------------------------------------ hero */
-.hero { max-width: 1280px; margin: 0 auto; padding: clamp(32px, min(7vw, 9vh), 112px) var(--pad-x) clamp(32px, min(6vw, 7vh), 96px); display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; scroll-margin-top: 72px; }
-.hero-copy { container-type: inline-size; flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: clamp(20px, min(3vw, 4vh), 40px); position: relative; z-index: 1; }
+.hero { max-width: 1280px; margin: 0 auto; padding: clamp(28px, min(7vw, 7vh), 112px) var(--pad-x) clamp(28px, min(6vw, 5vh), 96px); display: flex; flex-wrap: wrap; align-items: center; gap: 24px 40px; scroll-margin-top: 72px; }
+.hero-copy { container-type: inline-size; flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: clamp(18px, min(3vw, 3.4vh), 40px); position: relative; z-index: 1; }
 .hero .label { color: var(--text-secondary); gap: 14px; animation: aeRise 700ms var(--ease-out) both; }
-.display { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(52px, min(10vw, 22.4cqi, 19vh), 176px); line-height: 0.88; letter-spacing: -0.06em; }
+.display { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(52px, min(10vw, 22.4cqi, 17vh), 176px); line-height: 0.88; letter-spacing: -0.06em; }
 .display .ln { display: block; overflow: hidden; white-space: nowrap; }
 .display .ln > span { display: block; animation: aeRise 1100ms var(--ease-out) 100ms both; }
 .display .ln-1 { padding-bottom: 0.04em; }
@@ -126,6 +126,12 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .hero-word::after { content: ""; position: absolute; left: 0.03em; right: 0.05em; bottom: -0.07em; height: 0.075em; background: var(--ice-300); transform-origin: left; animation: aeGrow 800ms var(--ease-out) 250ms both; }
 .hero-word.first::after { animation-delay: 1000ms; }
 .hero-lede { margin: 0; max-width: 520px; font-size: clamp(19px, 1.6vw, 24px); line-height: 1.55; color: var(--text-secondary); text-wrap: pretty; animation: aeRise 900ms var(--ease-out) 480ms both; }
+.hero-global { align-self: flex-start; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 8px 14px 8px 10px; border: 1px solid var(--border-subtle); border-radius: 999px; background: rgba(255, 255, 255, 0.55); text-decoration: none; color: var(--ink); font-family: var(--font-mono); font-size: 12px; animation: aeRise 900ms var(--ease-out) 520ms both; transition: border-color var(--duration-base); }
+.hero-global:hover { border-color: var(--ink); color: var(--ink); }
+.hero-global .k { display: inline-flex; align-items: center; gap: 8px; color: var(--ice-700); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-size: 11px; }
+.hero-global .k::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ice-500); }
+.hero-global .t { font-family: var(--font-body), 'Noto Sans JP', 'Hiragino Sans', sans-serif; font-size: 14px; }
+.hero-global .go { color: var(--text-secondary); }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; animation: aeRise 900ms var(--ease-out) 560ms both; }
 .hero-ctas .pair { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-play { display: flex; align-items: center; gap: 12px; padding: 0; border: none; background: none; cursor: pointer; color: var(--ink); font-family: var(--font-mono); font-size: 12px; }
@@ -145,8 +151,9 @@ em.acc { font-style: normal; color: var(--ice-600); }
 .track { display: flex; width: max-content; animation: aeMarq 70s linear infinite; }
 .track.rev { animation-name: aeMarqR; }
 .chip { flex: none; margin-right: 12px; display: flex; align-items: center; gap: 12px; height: 60px; padding: 0 22px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--neutral-0); white-space: nowrap; }
-.chip b { font-family: var(--font-indic); font-size: 22px; line-height: 1; font-weight: 500; color: var(--deep-900); }
+.chip b { font-family: var(--font-indic), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif; font-size: 22px; line-height: 1; font-weight: 500; color: var(--deep-900); }
 .chip span { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+.chip i { font-style: normal; font-family: var(--font-mono); font-size: 10px; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--ice-700); padding: 2px 6px; border-radius: var(--radius-sm); background: var(--ice-50); }
 
 .ticker { border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); overflow: hidden; }
 .ticker .track { animation-duration: 52s; }

@@ -389,12 +389,13 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
   }
 
-  function initMarquees(langs) {
+  function initMarquees(langs, globals) {
     if (langs && langs.languages) {
       const chips = langs.languages.map((l) => ({ native: l.native || l.language, name: l.language }));
-      const mk = (list) => () => list.map((c) => h("div.chip", null, h("b", { text: c.native }), h("span", { text: c.name })));
+      const gl = (globals || []).map((g) => ({ native: g.native, name: g.language + (g.language === "French" ? ` (${g.region})` : ""), global: true }));
+      const mk = (list) => () => list.map((c) => h("div.chip", null, h("b", { text: c.native }), h("span", { text: c.name }), c.global ? h("i", { text: "Global" }) : null));
       fillTrack($("#chips-a"), mk(chips.slice(0, 12)), 30);
-      fillTrack($("#chips-b"), mk(chips.slice(12)), 30);
+      fillTrack($("#chips-b"), mk(chips.slice(12).concat(gl)), 30);
     }
     const tick = $("#ticker");
     const tpl = Array.from(tick.children);
@@ -842,7 +843,7 @@
       loadJSON("data/global-voices.json"),
     ]);
     const langData = langs.status === "fulfilled" ? langs.value : null;
-    initMarquees(langData);
+    initMarquees(langData, glob.status === "fulfilled" ? glob.value : []);
     if (langData && voices.status === "fulfilled") renderLibrary(voices.value, langData);
     else fail("#lib", "voices")(langs.reason || voices.reason);
     glob.status === "fulfilled" ? renderGlobal(glob.value) : fail("#gcards", "global voices")(glob.reason);
