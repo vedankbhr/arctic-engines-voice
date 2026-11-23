@@ -525,7 +525,16 @@ body.drawer-open { overflow: hidden; }
   .btn { height: 50px; padding: 0 20px; font-size: 15px; }
   .tick { padding: 26px 32px 28px; }
   .tick-v { font-size: 46px; }
-  .cap { padding: 24px 20px 28px; }
+  .display { font-size: clamp(52px, min(22.4cqi, 19vh), 84px); }
+  .section { gap: 36px; padding-top: 64px; padding-bottom: 64px; }
+  .cap { padding: 24px 0 28px; }
+  .step { grid-template-columns: 36px minmax(0, 1fr); gap: 8px; }
+  .lang-name span { white-space: normal; }
+  .tabs { width: 100%; flex-wrap: nowrap; overflow-x: auto; gap: 24px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: none; white-space: nowrap; font-size: var(--text-base); }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding-top: 44px; }
+  .foot-grid .foot-col:first-child, .foot-grid .foot-col:last-child { grid-column: 1 / -1; }
 
   .lang { grid-template-columns: 64px minmax(0, 1fr) auto; gap: 10px; }
   .lang-native { font-size: 16px; padding-left: 4px; }
